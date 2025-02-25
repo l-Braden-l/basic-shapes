@@ -87,12 +87,19 @@ def main():
 
 
         #-- other shapes --#
-        if pygame.mouse.get_pressed()[0] == True:
+        while pygame.mouse.get_pressed()[0] == True:
             # --- Circle Drawn --- #
-            circle_center = (380, 290)
+            circle_center = (380, 295)
             circle_radius = 200
             circle_color = config.RED
             circle_thick = 0
+            draw_circle(screen, circle_center, circle_radius, circle_color, circle_thick)
+
+            # --- Circle Drawn out line --- #
+            circle_center = (380, 295)
+            circle_radius = 200
+            circle_color = config.BLACK
+            circle_thick = 4
             draw_circle(screen, circle_center, circle_radius, circle_color, circle_thick)
 
             # --- Rectangle Drawn --- #
@@ -101,15 +108,27 @@ def main():
             thickness_r = 0
             draw_rectangle(screen, my_rect1, config.WHITE, thickness_r, border_radius)
 
+            # --- Rectangle Drawn outline --- #
+            my_rect1 = [230, 170, 300, 250]
+            border_radius = 50
+            thickness_r = 4
+            draw_rectangle(screen, my_rect1, config.BLACK, thickness_r, border_radius)
 
-
-            # --- Polygon Drawn --- #
+            # --- triangle Drawn --- #
             points = [(340, 250), #top left
                       (340, 340), #bottom left
                       (430, 300)  #right
                       ]
             thickness = 0
             draw_poly(screen, config.RED, points,thickness)
+
+            # --- triangle Drawn outline --- #
+            points = [(340, 250), #top left
+                      (340, 340), #bottom left
+                      (430, 300)  #right
+                      ]
+            thickness = 4
+            draw_poly(screen, config.BLACK, points,thickness)
 
         pygame.display.flip()
 
