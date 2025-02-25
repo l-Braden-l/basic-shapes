@@ -37,9 +37,9 @@ def draw_line(screen, color, start_pos, end_pos, thickness):
     pygame.draw.line(screen, color, start_pos, end_pos, thickness)
 
 # -- Poly Function -- #
-def draw_poly(screen, color, points):
+def draw_poly(screen, color, points,thickness):
     # --- Draw polygon on window --- #
-    pygame.draw.polygon(screen, color, points)
+    pygame.draw.polygon(screen, color, points,thickness)
 
 # -- Main Function -- #
 def main():
@@ -50,28 +50,66 @@ def main():
         running = handle_events()
         screen.fill(config.WHITE)  # Use color from config
 
-
-        # -- Circle Drawn -- #
-        circle_center = (380, 290)
-        circle_radius = 200
-        circle_color = config.RED
-        circle_thick = 0
-        draw_circle(screen, circle_center, circle_radius, circle_color, circle_thick)
-
-        # -- Rectangle Drawn -- #
-        my_rect1 = [230, 170, 300, 250]
-        border_radius = 50
-        thickness_r = 0
-        draw_rectangle(screen, my_rect1, config.WHITE, thickness_r, border_radius)
-
-        # -- Line Drawn -- #
+        # --- Line Drawn --- #
         start_pos = [50, 50]
         end_pos = [500, 50]
         draw_line(screen, config.BLUE, start_pos, end_pos, 5)
 
-        # -- Polygon Drawn -- #
-        points = [(340, 250), (340, 340), (430, 300)]  # Define 3 points for the polygon
-        draw_poly(screen, config.RED, points)
+        # --- Polygon Drawn --- #
+        points = [(340, 250), #middle
+                  (194, 429), #right
+                  (15, 532)  #bottom
+                    ]
+        thickness = 0
+        draw_poly(screen, config.RED, points,thickness)
+
+        # --- Polygon Drawn 2 --- #
+        points = [(657, 269), #top left
+                  (499, 577), #bottom left
+                  (374, 394)  #right
+                    ]
+        thickness = 3
+        draw_poly(screen, config.GREEN, points,thickness)   
+
+        # --- Polygon Drawn 3 --- #
+        points = [(93, 249), #left
+                  (257, 547), # bottom
+                  (400, 2),  #top right
+                  (200,300) #mid indent
+                    ]
+        thickness = 0
+        draw_poly(screen, config.BLACK, points,thickness)    
+
+
+
+
+
+
+
+        #-- other shapes --#
+        if pygame.mouse.get_pressed()[0] == True:
+            # --- Circle Drawn --- #
+            circle_center = (380, 290)
+            circle_radius = 200
+            circle_color = config.RED
+            circle_thick = 0
+            draw_circle(screen, circle_center, circle_radius, circle_color, circle_thick)
+
+            # --- Rectangle Drawn --- #
+            my_rect1 = [230, 170, 300, 250]
+            border_radius = 50
+            thickness_r = 0
+            draw_rectangle(screen, my_rect1, config.WHITE, thickness_r, border_radius)
+
+
+
+            # --- Polygon Drawn --- #
+            points = [(340, 250), #top left
+                      (340, 340), #bottom left
+                      (430, 300)  #right
+                      ]
+            thickness = 0
+            draw_poly(screen, config.RED, points,thickness)
 
         pygame.display.flip()
 
