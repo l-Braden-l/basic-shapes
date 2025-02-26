@@ -87,7 +87,7 @@ def main():
 
 
         #-- other shapes --#
-        if pygame.mouse.get_pressed()[0] == True:
+        if pygame.mouse.get_pressed()[0] == False:
             # --- Circle Drawn --- #
             circle_center = (380, 295)
             circle_radius = 200
